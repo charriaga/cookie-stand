@@ -20,44 +20,77 @@ function hourlyCustomer (min, max) {
 function cookieTotal (min, max, avgCookies) {
     let cookiesHour = [];
     for (let i=0; i<13; i++) {
-        let cookieCalulator = hourlyCustomer (min,max)[i] * avgCookies;
+        let cookieCalulator = Math.round(hourlyCustomer (min,max)[i] * avgCookies);
         cookiesHour.push(cookieCalulator);
-    }    
-    return cookiesHour
+    }
+    console.log(cookiesHour)    
+    return cookiesHour;
 }
 
+
+
 const seattleLocation = {
+    location: 'Seattle',
     min: 23,
     max: 65,
     avgCookies: 6.3,
-    cookiesAnHour: cookieTotal (this.min, this.max, this.avgCookies)
+    cookiesAnHour: cookieTotal (23, 65, 6.3)
 }
 
 const tokyoLocation = {
+    location: 'Tokyo',
     min: 3,
     max: 24,
     avgCookies: 1.2,
-    cookiesAnHour: cookieTotal (this.min, this.max, this.avgCookies)
+    cookiesAnHour: cookieTotal (3, 24, 1.2)
 }
 
 const dubaiLocation = {
+    location: 'Dubai',
     min: 11,
     max: 38,
     avgCookies: 3.7,
-    cookiesAnHour: cookieTotal (this.min, this.max, this.avgCookies)
+    cookiesAnHour: cookieTotal (11, 38, 3.7)
 }
 
 const parisLocation = {
+    location: 'Paris',
     min: 20,
     max: 38,
     avgCookies: 2.3,
-    cookiesAnHour: cookieTotal (this.min, this.max, this.avgCookies)
+    cookiesAnHour: cookieTotal (20, 38, 2.3)
 }
 
 const limaLocation = {
+    location: 'Lima',
     min: 2,
     max: 16,
     avgCookies: 4.6,
-    cookiesAnHour: cookieTotal (this.min, this.max, this.avgCookies)
+    cookiesAnHour: cookieTotal (2, 16, 4.6)
 
 }
+
+const container = document.getElementById('salesList');
+
+function renderSalesList (city) {
+    const article = document.createElement('article');
+    container.appendChild(article);
+
+    const h2 = document.createElement('h2')
+    article.appendChild(h2)
+    h2.textContent = city.location
+
+    const ul = document.createElement('ul')
+    article.appendChild(ul)
+
+    for (let i=0; i<13; i++) {
+        const li = document.createElement('li');
+        ul.appendChild(li);
+        li.textContent = city.cookiesAnHour[i];
+    }
+}
+renderSalesList (seattleLocation);
+renderSalesList (tokyoLocation);
+renderSalesList (dubaiLocation);
+renderSalesList (parisLocation);
+renderSalesList (limaLocation);
