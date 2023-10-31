@@ -89,8 +89,8 @@ function renderSalesList (city) {
             if (i<6) {
                 let a = 6+i; 
                 li.textContent = `${a} am: ${city.cookiesAnHour[i]} cookies`;
-            } else if (i = 6) {
-                   let c = 12
+            } else if (i === 6) {
+                let c = 12;
                 li.textContent = `${c} pm: ${city.cookiesAnHour[i]} cookies`;
             } else {
                 let b = i-5;
