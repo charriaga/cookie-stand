@@ -106,7 +106,7 @@ function renderSalesList (city) {
                 let c = 12;
                 li.textContent = `${c} pm: ${city.cookiesAnHour[i]} cookies`;
             } else {
-                let b = i-5;
+                let b = i-6;
                 li.textContent = `${b} pm: ${city.cookiesAnHour[i]} cookies`;
             }
     }
