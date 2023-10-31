@@ -27,6 +27,14 @@ function cookieTotal (min, max, avgCookies) {
     return cookiesHour;
 }
 
+function totalCookies (cookieTotal) {
+    let total = 0
+    for (let i=0; i<cookieTotal.length; i++) {
+         total +=cookieTotal[i]
+    }
+    return total
+}
+
 
 
 const seattleLocation = {
@@ -34,7 +42,8 @@ const seattleLocation = {
     min: 23,
     max: 65,
     avgCookies: 6.3,
-    cookiesAnHour: cookieTotal (23, 65, 6.3)
+    cookiesAnHour: cookieTotal (23, 65, 6.3),
+    total: totalCookies(cookieTotal(23,65,6.3))
 }
 
 const tokyoLocation = {
@@ -42,7 +51,8 @@ const tokyoLocation = {
     min: 3,
     max: 24,
     avgCookies: 1.2,
-    cookiesAnHour: cookieTotal (3, 24, 1.2)
+    cookiesAnHour: cookieTotal (3, 24, 1.2),
+    total: totalCookies(cookieTotal(3,24,1.2))
 }
 
 const dubaiLocation = {
@@ -50,7 +60,8 @@ const dubaiLocation = {
     min: 11,
     max: 38,
     avgCookies: 3.7,
-    cookiesAnHour: cookieTotal (11, 38, 3.7)
+    cookiesAnHour: cookieTotal (11, 38, 3.7),
+    total: totalCookies(cookieTotal(11,38,3.7))
 }
 
 const parisLocation = {
@@ -58,7 +69,8 @@ const parisLocation = {
     min: 20,
     max: 38,
     avgCookies: 2.3,
-    cookiesAnHour: cookieTotal (20, 38, 2.3)
+    cookiesAnHour: cookieTotal (20, 38, 2.3),
+    total: totalCookies(cookieTotal(20,38,2.3))
 }
 
 const limaLocation = {
@@ -66,7 +78,8 @@ const limaLocation = {
     min: 2,
     max: 16,
     avgCookies: 4.6,
-    cookiesAnHour: cookieTotal (2, 16, 4.6)
+    cookiesAnHour: cookieTotal (2, 16, 4.6),
+    total: totalCookies(cookieTotal(2,16,4.6))
 
 }
 
@@ -96,8 +109,10 @@ function renderSalesList (city) {
                 let b = i-5;
                 li.textContent = `${b} pm: ${city.cookiesAnHour[i]} cookies`;
             }
-
     }
+    const li = document.createElement('li');
+    ul.appendChild(li);
+    li.textContent = `Total: ${city.total}`
 }
 renderSalesList (seattleLocation);
 renderSalesList (tokyoLocation);
