@@ -112,7 +112,7 @@ function renderSalesList (city) {
     }
     const li = document.createElement('li');
     ul.appendChild(li);
-    li.textContent = `Total: ${city.total}`
+    li.textContent = `Total: ${city.total} cookies`
 }
 renderSalesList (seattleLocation);
 renderSalesList (tokyoLocation);
