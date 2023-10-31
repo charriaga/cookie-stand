@@ -101,25 +101,29 @@ const container = document.getElementById('salesList');
 const table = document.createElement('table');
 container.appendChild(table);
 
-const headerRow = document.createElement('tr');
-table.appendChild(headerRow);
+function header() {
+    const headerRow = document.createElement('tr');
+    table.appendChild(headerRow);
 
-const firstHeaderCell = document.createElement('th');
-headerRow.appendChild(firstHeaderCell);
+    const firstHeaderCell = document.createElement('th');
+    headerRow.appendChild(firstHeaderCell);
 
 // create time slots
 
-const openHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-for (let i=0; i<14; i++) {
-    let tableHead = document.createElement('th');
-    headerRow.appendChild(tableHead);
-    tableHead.textContent = openHours[i];
+    const openHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+    for (let i=0; i<14; i++) {
+        let tableHead = document.createElement('th');
+        headerRow.appendChild(tableHead);
+        tableHead.textContent = openHours[i];
+    }
+
+
+    const totalHeaderCell = document.createElement('th');
+    headerRow.appendChild(totalHeaderCell);
+    totalHeaderCell.textContent = 'Total';
 }
 
-const totalHeaderCell = document.createElement('th');
-headerRow.appendChild(totalHeaderCell);
-totalHeaderCell.textContent = 'Total';
-
+header()
 // 
 
 Store.prototype.renderTable = function () {
@@ -156,12 +160,23 @@ function footer (store1, store2, store3, store4, store5) {
     footerRow.appendChild(titleCell)
     titleCell.textContent = 'Total'
 
-    for (i=o; i<14; i++) {
-        
+    let totalTotal = 0
+
+    for (let i=0; i<14; i++) {
+        let timeTotal = store1.cookiesAnHour[i] + store2.cookiesAnHour[i] + store3.cookiesAnHour[i] + store4.cookiesAnHour[i] + store5.cookiesAnHour[i];
+        totalTotal += timeTotal;
+        let timeCell = document.createElement('th');
+        footerRow.appendChild(timeCell);
+        timeCell.textContent = timeTotal;
     }
+
+    const absoluteTotalCell = document.createElement('th');
+    footerRow.appendChild(absoluteTotalCell);
+    absoluteTotalCell.textContent = totalTotal;
+
 }
 
-footer ()
+footer (seattleLocation, tokyoLocation, dubaiLocation, parisLocation, limaLocation);
 
 // function renderSalesList (city) {
 //     const article = document.createElement('article');
