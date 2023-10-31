@@ -1,20 +1,20 @@
 'use strict'
 
 function getRandomNumberInt (min, max) {
-    let span = max - min + 1;
-    let randomNumber = Math.floor(Math.random() * span);
-    let returnNumber = randomNumber + min;
+    const span = max - min + 1;
+    const randomNumber = Math.floor(Math.random() * span);
+    const returnNumber = randomNumber + min;
     //console.log (returnNumber);
     return returnNumber;
 }
 
 function hourlyCustomer (min, max) {
-    let hourArray = []
+    let hourArray = [];
     for (let i=0; i<14; i++) {
-        let customer = getRandomNumberInt (min, max)
-        hourArray.push(customer)
+        let customer = getRandomNumberInt (min, max);
+        hourArray.push(customer);
     }
-    return hourArray
+    return hourArray;
 }
 
 function cookieTotal (min, max, avgCookies) {
@@ -23,16 +23,16 @@ function cookieTotal (min, max, avgCookies) {
         let cookieCalulator = Math.round(hourlyCustomer (min,max)[i] * avgCookies);
         cookiesHour.push(cookieCalulator);
     }
-    console.log(cookiesHour)    
+    console.log(cookiesHour);    
     return cookiesHour;
 }
 
 function totalCookies (cookieTotal) {
-    let total = 0
+    let total = 0;
     for (let i=0; i<cookieTotal.length; i++) {
-         total +=cookieTotal[i]
+         total +=cookieTotal[i];
     }
-    return total
+    return total;
 }
 
 
@@ -114,6 +114,7 @@ function renderSalesList (city) {
     ul.appendChild(li);
     li.textContent = `Total: ${city.total} cookies`
 }
+
 renderSalesList (seattleLocation);
 renderSalesList (tokyoLocation);
 renderSalesList (dubaiLocation);
