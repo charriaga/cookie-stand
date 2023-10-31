@@ -10,7 +10,7 @@ function getRandomNumberInt (min, max) {
 
 function hourlyCustomer (min, max) {
     let hourArray = []
-    for (let i=0; i<13; i++) {
+    for (let i=0; i<14; i++) {
         let customer = getRandomNumberInt (min, max)
         hourArray.push(customer)
     }
@@ -19,7 +19,7 @@ function hourlyCustomer (min, max) {
 
 function cookieTotal (min, max, avgCookies) {
     let cookiesHour = [];
-    for (let i=0; i<13; i++) {
+    for (let i=0; i<14; i++) {
         let cookieCalulator = Math.round(hourlyCustomer (min,max)[i] * avgCookies);
         cookiesHour.push(cookieCalulator);
     }
@@ -83,10 +83,20 @@ function renderSalesList (city) {
     const ul = document.createElement('ul')
     article.appendChild(ul)
 
-    for (let i=0; i<13; i++) {
+    for (let i=0; i<14; i++) {
         const li = document.createElement('li');
         ul.appendChild(li);
-        li.textContent = city.cookiesAnHour[i];
+            if (i<6) {
+                let a = 6+i; 
+                li.textContent = `${a} am: ${city.cookiesAnHour[i]} cookies`;
+            } else if (i === 6) {
+                let c = 12;
+                li.textContent = `${c} pm: ${city.cookiesAnHour[i]} cookies`;
+            } else {
+                let b = i-5;
+                li.textContent = `${b} pm: ${city.cookiesAnHour[i]} cookies`;
+            }
+
     }
 }
 renderSalesList (seattleLocation);

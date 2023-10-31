@@ -1,0 +1,47 @@
+header {
+    padding-bottom: 30px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'righteous-regular', Arial, sans-serif;
+    color: salmon;
+    background-color: black;
+    padding: 25px;
+}
+
+#navigator {
+    background-color: salmon;
+}
+
+nav {
+display: inline-block;
+padding: 10px;
+background-color: salmon;
+}
+
+#salesList {
+    padding: 30px
+}
+
+article { 
+    padding-bottom: 60px;
+}
+
+h2 {
+    font-family: 'righteous-regular', Arial, sans-serif;
+    font-size: 26px;
+}
+ul {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding-left: 25px;
+    color: gray;
+}
+
+footer {
+    text-align: center;
+    background-color: lightgray;
+    padding: 40px
+}
