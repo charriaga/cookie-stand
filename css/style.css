@@ -24,6 +24,11 @@ a {
 
 }
 
+main {
+    margin: auto;
+    height: 60%;
+}
+
 #salesList {
     display: flex;
     padding: 30px;
@@ -58,7 +63,7 @@ footer {
     margin-bottom: 0%;
     text-align: center;
     background-color: lightgray;
-    padding: 5%
+    padding: 5%;
 }
 
 img {
@@ -82,10 +87,11 @@ th, td {
 }
 
 table {
-
     border-color: gray;
-    
+    height: 50%;
+    margin: auto;
 }
+
 .grayCells {
     background-color: gray;
     color: white;
@@ -96,9 +102,37 @@ table {
     background-color: salmon;
 }
 
-td.wide {
+td.wide2 {
+    display: flex;
     width: 100px;
-    
+    border-style: solid;
+    border-width: 2px;
+    border-color: gray;
+    justify-content: center;
+    align-items: center;  
+}
+
+td.wide1 {
+    width: 150px;
+}
+
+h3 {
+    display: flex;
+    color: salmon;
+    font-family: 'righteousregular', sans-serif;
+    font-style: italic;
+    padding: 1%;
+    margin-left: 20%;
+}
+
+
+form {
+    display: flex;
+    margin: auto;
+    width: 80%;
+    border-style: solid;
+    border-width: 1px;
+    padding: 1%;
 }
 
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +9,33 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <header>
         <h1>Welcome to Pat's Salmon Cookies!</h1>
         <div id="navigator">
             <nav><a href="index.html">Home</a>
-            <a href="sales.html">Sales</a></nav>
+                <a href="sales.html">Sales</a>
+            </nav>
         </div>
     </header>
     <main>
+        <section>
+            <h3>Add a new store to the table!!!</h3>
+            <form id="newLocation">
+                <fieldset>
+                    <label for="location">Location Name</label>
+                    <input name="location" type="text">
+                    <label for="min">Minimum Customers Per Hour</label>
+                    <input name="min" type="menu">
+                    <label for="max">Maximum Customoers Per Hour</label>
+                    <input name="max" type="menu">
+                    <label for="avgCookies">Average Cookies Per Sale</label>
+                    <input name="avgCookies" type="menu">
+                    <button type="submit">Click here to add!</button>
+                </fieldset>
+            </form>
+        </section>
         <div id="salesList"></div>
     </main>
     <footer>
@@ -24,4 +43,5 @@
     </footer>
     <script src="js/app.js"></script>
 </body>
+
 </html>

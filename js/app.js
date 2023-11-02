@@ -1,5 +1,8 @@
 'use strict'
 
+const openHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+
+ 
 
 function getRandomNumberInt (min, max) {
     const span = max - min + 1;
@@ -51,6 +54,35 @@ const dubaiLocation = new Store('Dubai', 11, 38, 3.7);
 const parisLocation = new Store('Paris', 20, 38, 2.3);
 const limaLocation = new Store('Lima', 2, 16, 4.6);
 
+let stores = []
+
+stores.push(seattleLocation);
+stores.push(tokyoLocation);
+stores.push(dubaiLocation);
+stores.push(parisLocation);
+stores.push(limaLocation);
+
+//log event
+
+const newStore = document.getElementById('newLocation')
+
+newLocation.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const newLocation = event.target.location.value;
+    const newMin = event.target.min.value;
+    const newMax = event.target.max.value;
+    const newAvgCookies = event.target.avgCookies.value;
+    const newPlace = new Store (newLocation, newMin, newMax, newAvgCookies);
+    newPlace.renderTable();
+    newStore.reset();
+    stores.push(newPlace);
+  }
+)
+
+
+
+//render table row
+
 // const seattleLocation = {
 //     location: 'Seattle',
 //     min: 23,
@@ -97,7 +129,6 @@ const limaLocation = new Store('Lima', 2, 16, 4.6);
 
 //}
 
-
 const container = document.getElementById('salesList');
 
 const table = document.createElement('table');
@@ -111,12 +142,13 @@ function header() {
     const firstHeaderCell = document.createElement('th');
     headerRow.appendChild(firstHeaderCell);
     firstHeaderCell.classList.add('grayCells')
-    firstHeaderCell.classList.add('wide')
+    firstHeaderCell.classList.add('wide1')
 
 // create time slots
 
-    const openHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-    for (let i=0; i<14; i++) {
+
+
+    for (let i=0; i<openHours.length; i++) {
         let tableHead = document.createElement('th');
         headerRow.appendChild(tableHead);
         tableHead.textContent = openHours[i];
@@ -128,7 +160,7 @@ function header() {
     headerRow.appendChild(totalHeaderCell);
     totalHeaderCell.textContent = 'Total';
     totalHeaderCell.classList.add('grayCells')
-    totalHeaderCell.classList.add('wide')
+    totalHeaderCell.classList.add('wide2')
 }
 
 header()
@@ -142,9 +174,9 @@ Store.prototype.renderTable = function () {
     storeRow.appendChild(storeLocation);
     storeLocation.textContent = this.location;
     storeLocation.classList.add('storeLocation');
-    storeLocation.classList.add('wide')
+    storeLocation.classList.add('wide1')
 
-    for (let i=0; i<14; i++) {
+    for (let i=0; i<openHours.length; i++) {
         let storeCell = document.createElement('td');
         storeRow.appendChild(storeCell);
         storeCell.textContent = this.cookiesAnHour[i]
@@ -155,7 +187,7 @@ Store.prototype.renderTable = function () {
     storeRow.appendChild(totalCell);
     totalCell.textContent = this.total;
     totalCell.classList.add('grayCells')
-    totalCell.classList.add('wide')
+    totalCell.classList.add('wide2')
 }
 
 seattleLocation.renderTable();
@@ -165,38 +197,43 @@ parisLocation.renderTable();
 limaLocation.renderTable();
 
 // footer row
-const footerRow = document.createElement('tr');
+const footerRow = document.createElement('tfoot');
 table.appendChild(footerRow);
 
-function footer (store1, store2, store3, store4, store5) {
+function footer (stores) {
     const titleCell = document.createElement('th');
-    footerRow.appendChild(titleCell)
-    titleCell.textContent = 'Total'
-    titleCell.classList.add('grayCells')
-    titleCell.classList.add('wide')
-    
+    footerRow.appendChild(titleCell);
+    titleCell.textContent = 'Total';
+    titleCell.classList.add('grayCells');
+    titleCell.classList.add('wide1');
+   
+    let totalTotal = 0;
+    let timeTotal = 0;
 
-    let totalTotal = 0
+  
 
-    for (let i=0; i<14; i++) {
-        let timeTotal = store1.cookiesAnHour[i] + store2.cookiesAnHour[i] + store3.cookiesAnHour[i] + store4.cookiesAnHour[i] + store5.cookiesAnHour[i];
+    for (let i=0; i<openHours.length; i++) {
+        timeTotal = 0 
+        for (let j=0; j<stores.length; j++) {
+          timeTotal += stores[j].cookiesAnHour[i]
+          console.log(timeTotal)
+        }
         totalTotal += timeTotal;
         let timeCell = document.createElement('th');
         footerRow.appendChild(timeCell);
         timeCell.textContent = timeTotal;
         timeCell.classList.add('grayCells')
-        timeCell.classList.add('wide')
     }
 
     const absoluteTotalCell = document.createElement('th');
     footerRow.appendChild(absoluteTotalCell);
     absoluteTotalCell.textContent = totalTotal;
     absoluteTotalCell.classList.add('grayCells')
-    absoluteTotalCell.classList.add('wide')
+    absoluteTotalCell.classList.add('wide2')
 
 }
 
-footer (seattleLocation, tokyoLocation, dubaiLocation, parisLocation, limaLocation);
+footer (stores);
 
 // function renderSalesList (city) {
 //     const article = document.createElement('article');
