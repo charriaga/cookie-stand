@@ -4,8 +4,8 @@
 
 @font-face {
     font-family: 'righteousregular';
-    src: url('/fonts/webfontkit-20231030-194931/righteous-regular-webfont.woff2') format('woff2'),
-         url('/git fonts/webfontkit-20231030-194931/righteous-regular-webfont.woff') format('woff');
+    src: url('fonts/webfontkit-20231030-194931/righteous-regular-webfont.woff2') format('woff2'),
+         url('git fonts/webfontkit-20231030-194931/righteous-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
