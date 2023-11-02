@@ -68,10 +68,10 @@ const newStore = document.getElementById('newLocation')
 
 newLocation.addEventListener('submit', function (event) {
     event.preventDefault();
-    const newLocation = event.target.location.value;
-    const newMin = event.target.min.value;
-    const newMax = event.target.max.value;
-    const newAvgCookies = event.target.avgCookies.value;
+    const newLocation = event.target.locationName.value;
+    const newMin = event.target.minimumCustomersPerHour.value;
+    const newMax = event.target.maximumCustomersPerHour.value;
+    const newAvgCookies = event.target.avgerageCookiesPerSale.value;
     const newPlace = new Store (newLocation, newMin, newMax, newAvgCookies);
     newPlace.renderTable();
     newStore.reset();
@@ -136,13 +136,14 @@ container.appendChild(table);
 
 // header row
 function header() {
-    const headerRow = document.createElement('tr');
+    const headerRow = document.createElement('thead');
     table.appendChild(headerRow);
 
     const firstHeaderCell = document.createElement('th');
     headerRow.appendChild(firstHeaderCell);
     firstHeaderCell.classList.add('grayCells')
     firstHeaderCell.classList.add('wide1')
+    firstHeaderCell.setAttribute('scope', 'col')
 
 // create time slots
 
@@ -153,6 +154,7 @@ function header() {
         headerRow.appendChild(tableHead);
         tableHead.textContent = openHours[i];
         tableHead.classList.add('grayCells')
+        tableHead.setAttribute('scope', 'col')
     }
 
 
@@ -161,6 +163,7 @@ function header() {
     totalHeaderCell.textContent = 'Total';
     totalHeaderCell.classList.add('grayCells')
     totalHeaderCell.classList.add('wide2')
+    totalHeaderCell.setAttribute('scope', 'col')
 }
 
 header()
@@ -175,6 +178,7 @@ Store.prototype.renderTable = function () {
     storeLocation.textContent = this.location;
     storeLocation.classList.add('storeLocation');
     storeLocation.classList.add('wide1')
+    storeLocation.setAttribute('scope', 'row')
 
     for (let i=0; i<openHours.length; i++) {
         let storeCell = document.createElement('td');
@@ -206,6 +210,7 @@ function footer (stores) {
     titleCell.textContent = 'Total';
     titleCell.classList.add('grayCells');
     titleCell.classList.add('wide1');
+    titleCell.setAttribute('scope', 'row')
    
     let totalTotal = 0;
     let timeTotal = 0;

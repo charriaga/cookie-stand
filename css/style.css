@@ -21,7 +21,7 @@ a {
     display: flex;
     margin-left: 10%;
     justify-content: space-between;
-
+    color:black
 }
 
 main {
@@ -50,8 +50,12 @@ p {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     padding-left: 20px;
-    color: gray;
+    color: rgb(66, 66, 66);
     line-height: 30px;
+}
+
+.footer {
+    color: black;
 }
 
 .bottom {
@@ -87,13 +91,13 @@ th, td {
 }
 
 table {
-    border-color: gray;
+    border-color: rgb(55, 55, 55);
     height: 50%;
     margin: auto;
 }
 
 .grayCells {
-    background-color: gray;
+    background-color: rgb(55, 55, 55);
     color: white;
     border: none;
 }  
@@ -107,7 +111,7 @@ td.wide2 {
     width: 100px;
     border-style: solid;
     border-width: 2px;
-    border-color: gray;
+    border-color: rgb(55, 55, 55);
     justify-content: center;
     align-items: center;  
 }
@@ -116,9 +120,9 @@ td.wide1 {
     width: 150px;
 }
 
-h3 {
+.salesPage {
     display: flex;
-    color: salmon;
+    color: black;
     font-family: 'righteousregular', sans-serif;
     font-style: italic;
     padding: 1%;
