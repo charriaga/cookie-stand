@@ -101,12 +101,15 @@ const container = document.getElementById('salesList');
 const table = document.createElement('table');
 container.appendChild(table);
 
+// header row
 function header() {
     const headerRow = document.createElement('tr');
     table.appendChild(headerRow);
 
     const firstHeaderCell = document.createElement('th');
     headerRow.appendChild(firstHeaderCell);
+    firstHeaderCell.classList.add('grayCells')
+    firstHeaderCell.setAttribute('id', 'wide')
 
 // create time slots
 
@@ -115,17 +118,20 @@ function header() {
         let tableHead = document.createElement('th');
         headerRow.appendChild(tableHead);
         tableHead.textContent = openHours[i];
+        tableHead.classList.add('grayCells')
     }
 
 
     const totalHeaderCell = document.createElement('th');
     headerRow.appendChild(totalHeaderCell);
     totalHeaderCell.textContent = 'Total';
+    totalHeaderCell.classList.add('grayCells')
+    totalHeaderCell.setAttribute('id', 'wide')
 }
 
 header()
-// 
 
+// table body
 Store.prototype.renderTable = function () {
     const storeRow = document.createElement('tr');
     table.appendChild(storeRow);
@@ -133,17 +139,21 @@ Store.prototype.renderTable = function () {
     const storeLocation = document.createElement('td');
     storeRow.appendChild(storeLocation);
     storeLocation.textContent = this.location;
+    storeLocation.classList.add('storeLocation');
+    storeLocation.setAttribute('id', 'wide')
 
     for (let i=0; i<14; i++) {
         let storeCell = document.createElement('td');
         storeRow.appendChild(storeCell);
         storeCell.textContent = this.cookiesAnHour[i]
+        storeCell.classList.add('numbers')
     }
 
     const totalCell = document.createElement('td');
     storeRow.appendChild(totalCell);
     totalCell.textContent = this.total;
-
+    totalCell.classList.add('grayCells')
+    totalCell.setAttribute('id', 'wide')
 }
 
 seattleLocation.renderTable();
@@ -152,6 +162,7 @@ dubaiLocation.renderTable();
 parisLocation.renderTable();
 limaLocation.renderTable();
 
+// footer row
 const footerRow = document.createElement('tr');
 table.appendChild(footerRow);
 
@@ -159,6 +170,9 @@ function footer (store1, store2, store3, store4, store5) {
     const titleCell = document.createElement('th');
     footerRow.appendChild(titleCell)
     titleCell.textContent = 'Total'
+    titleCell.classList.add('grayCells')
+    titleCell.setAttribute('id', 'wide')
+    
 
     let totalTotal = 0
 
@@ -168,11 +182,15 @@ function footer (store1, store2, store3, store4, store5) {
         let timeCell = document.createElement('th');
         footerRow.appendChild(timeCell);
         timeCell.textContent = timeTotal;
+        timeCell.classList.add('grayCells')
+        timeCell.setAttribute('id', 'wide')
     }
 
     const absoluteTotalCell = document.createElement('th');
     footerRow.appendChild(absoluteTotalCell);
     absoluteTotalCell.textContent = totalTotal;
+    absoluteTotalCell.classList.add('grayCells')
+    absoluteTotalCell.setAttribute('id', 'wide')
 
 }
 
