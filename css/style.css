@@ -82,7 +82,9 @@ th, td {
 }
 
 table {
+
     border-color: gray;
+    
 }
 .grayCells {
     background-color: gray;
@@ -94,7 +96,7 @@ table {
     background-color: salmon;
 }
 
-#wide {
+td.wide {
     width: 100px;
     
 }

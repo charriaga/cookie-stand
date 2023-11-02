@@ -1,5 +1,6 @@
 'use strict'
 
+
 function getRandomNumberInt (min, max) {
     const span = max - min + 1;
     const randomNumber = Math.floor(Math.random() * span);
@@ -96,6 +97,7 @@ const limaLocation = new Store('Lima', 2, 16, 4.6);
 
 //}
 
+
 const container = document.getElementById('salesList');
 
 const table = document.createElement('table');
@@ -109,7 +111,7 @@ function header() {
     const firstHeaderCell = document.createElement('th');
     headerRow.appendChild(firstHeaderCell);
     firstHeaderCell.classList.add('grayCells')
-    firstHeaderCell.setAttribute('id', 'wide')
+    firstHeaderCell.classList.add('wide')
 
 // create time slots
 
@@ -126,7 +128,7 @@ function header() {
     headerRow.appendChild(totalHeaderCell);
     totalHeaderCell.textContent = 'Total';
     totalHeaderCell.classList.add('grayCells')
-    totalHeaderCell.setAttribute('id', 'wide')
+    totalHeaderCell.classList.add('wide')
 }
 
 header()
@@ -140,7 +142,7 @@ Store.prototype.renderTable = function () {
     storeRow.appendChild(storeLocation);
     storeLocation.textContent = this.location;
     storeLocation.classList.add('storeLocation');
-    storeLocation.setAttribute('id', 'wide')
+    storeLocation.classList.add('wide')
 
     for (let i=0; i<14; i++) {
         let storeCell = document.createElement('td');
@@ -153,7 +155,7 @@ Store.prototype.renderTable = function () {
     storeRow.appendChild(totalCell);
     totalCell.textContent = this.total;
     totalCell.classList.add('grayCells')
-    totalCell.setAttribute('id', 'wide')
+    totalCell.classList.add('wide')
 }
 
 seattleLocation.renderTable();
@@ -171,7 +173,7 @@ function footer (store1, store2, store3, store4, store5) {
     footerRow.appendChild(titleCell)
     titleCell.textContent = 'Total'
     titleCell.classList.add('grayCells')
-    titleCell.setAttribute('id', 'wide')
+    titleCell.classList.add('wide')
     
 
     let totalTotal = 0
@@ -183,14 +185,14 @@ function footer (store1, store2, store3, store4, store5) {
         footerRow.appendChild(timeCell);
         timeCell.textContent = timeTotal;
         timeCell.classList.add('grayCells')
-        timeCell.setAttribute('id', 'wide')
+        timeCell.classList.add('wide')
     }
 
     const absoluteTotalCell = document.createElement('th');
     footerRow.appendChild(absoluteTotalCell);
     absoluteTotalCell.textContent = totalTotal;
     absoluteTotalCell.classList.add('grayCells')
-    absoluteTotalCell.setAttribute('id', 'wide')
+    absoluteTotalCell.classList.add('wide')
 
 }
 
