@@ -14,7 +14,7 @@ function getRandomNumberInt (min, max) {
 
 function hourlyCustomer (min, max) {
     let hourArray = [];
-    for (let i=0; i<14; i++) {
+    for (let i=0; i<openHours.length; i++) {
         let customer = getRandomNumberInt (min, max);
         hourArray.push(customer);
     }
@@ -23,7 +23,7 @@ function hourlyCustomer (min, max) {
 
 function cookieTotal (min, max, avgCookies) {
     let cookiesHour = [];
-    for (let i=0; i<14; i++) {
+    for (let i=0; i<openHours.length; i++) {
         let cookieCalulator = Math.round(hourlyCustomer (min,max)[i] * avgCookies);
         cookiesHour.push(cookieCalulator);
     }
@@ -134,16 +134,29 @@ const container = document.getElementById('salesList');
 const table = document.createElement('table');
 container.appendChild(table);
 
+function createCellWithAtt (cell, parentElement, classString, attribute1, attribute2) {
+    parentElement.appendChild(cell);
+    cell.classList.add(classString);
+    cell.setAttribute(attribute1, attribute2);
+    return cell;
+}
+
+function createCell (cell, parentElement, classString) {
+    parentElement.appendChild(cell);
+    cell.classList.add(classString);
+    return cell;
+}
+
+
 // header row
 function header() {
     const headerRow = document.createElement('thead');
     table.appendChild(headerRow);
 
-    const firstHeaderCell = document.createElement('th');
-    headerRow.appendChild(firstHeaderCell);
-    firstHeaderCell.classList.add('grayCells')
-    firstHeaderCell.classList.add('wide1')
-    firstHeaderCell.setAttribute('scope', 'col')
+    let firstHeaderCell = document.createElement('th');
+    createCellWithAtt(firstHeaderCell, headerRow, 'grayCells', 'scope', 'col');
+    firstHeaderCell.classList.add('wide1');
+
 
 // create time slots
 
@@ -159,11 +172,9 @@ function header() {
 
 
     const totalHeaderCell = document.createElement('th');
-    headerRow.appendChild(totalHeaderCell);
+    createCellWithAtt(totalHeaderCell, headerRow, 'grayCells', 'scope', 'col');
     totalHeaderCell.textContent = 'Total';
-    totalHeaderCell.classList.add('grayCells')
     totalHeaderCell.classList.add('wide2')
-    totalHeaderCell.setAttribute('scope', 'col')
 }
 
 header()
@@ -174,23 +185,19 @@ Store.prototype.renderTable = function () {
     table.appendChild(storeRow);
 
     const storeLocation = document.createElement('td');
-    storeRow.appendChild(storeLocation);
+    createCellWithAtt(storeLocation, storeRow, 'storeLocation', 'scope', 'row');
     storeLocation.textContent = this.location;
-    storeLocation.classList.add('storeLocation');
     storeLocation.classList.add('wide1')
-    storeLocation.setAttribute('scope', 'row')
 
     for (let i=0; i<openHours.length; i++) {
         let storeCell = document.createElement('td');
-        storeRow.appendChild(storeCell);
+        createCell(storeCell, storeRow, 'numbers')
         storeCell.textContent = this.cookiesAnHour[i]
-        storeCell.classList.add('numbers')
     }
 
     const totalCell = document.createElement('td');
-    storeRow.appendChild(totalCell);
+    createCell(totalCell, storeRow, 'grayCells')
     totalCell.textContent = this.total;
-    totalCell.classList.add('grayCells')
     totalCell.classList.add('wide2')
 }
 
@@ -205,12 +212,11 @@ const footerRow = document.createElement('tfoot');
 table.appendChild(footerRow);
 
 function footer (stores) {
+    
     const titleCell = document.createElement('th');
-    footerRow.appendChild(titleCell);
+    createCellWithAtt(titleCell, footerRow, 'grayCells', 'scope', 'row');
     titleCell.textContent = 'Total';
-    titleCell.classList.add('grayCells');
     titleCell.classList.add('wide1');
-    titleCell.setAttribute('scope', 'row')
    
     let totalTotal = 0;
     let timeTotal = 0;
@@ -221,19 +227,16 @@ function footer (stores) {
         timeTotal = 0 
         for (let j=0; j<stores.length; j++) {
           timeTotal += stores[j].cookiesAnHour[i]
-          console.log(timeTotal)
         }
         totalTotal += timeTotal;
         let timeCell = document.createElement('th');
-        footerRow.appendChild(timeCell);
+        createCell(timeCell, footerRow, 'grayCells')
         timeCell.textContent = timeTotal;
-        timeCell.classList.add('grayCells')
     }
 
     const absoluteTotalCell = document.createElement('th');
-    footerRow.appendChild(absoluteTotalCell);
+    createCell(absoluteTotalCell, footerRow, 'grayCells')
     absoluteTotalCell.textContent = totalTotal;
-    absoluteTotalCell.classList.add('grayCells')
     absoluteTotalCell.classList.add('wide2')
 
 }
