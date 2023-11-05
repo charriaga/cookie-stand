@@ -2,7 +2,7 @@
 h1 {
     text-align: center;
     font-size: 40px;
-    font-family: 'righteousregular', Arial, sans-serif;
+    font-family: 'Righteous', Arial, sans-serif;
     color: salmon;
     background-color: black;
     padding: 5%;
@@ -41,8 +41,9 @@ article {
 }
 
 h2 {
-    font-family: 'righteousregular', Arial, sans-serif;
+    font-family: 'Righteous', Arial, sans-serif;
     font-size: 26px;
+    color: rgb(102, 42, 42);
 }
 
 
@@ -122,8 +123,8 @@ td.wide1 {
 
 .salesPage {
     display: flex;
-    color: black;
-    font-family: 'righteousregular', sans-serif;
+    color: rgb(102, 42, 42);
+    font-family: 'Righteous', sans-serif;
     font-style: italic;
     padding: 1%;
     margin-left: 20%;
@@ -137,6 +138,13 @@ form {
     border-style: solid;
     border-width: 1px;
     padding: 1%;
+    background-color: whitesmoke;
 }
+
+label {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(27, 27, 27);
+}
+
 
 
